@@ -1,0 +1,176 @@
+{
+    "structure": [
+        {
+            "id": 1,
+            "text": "Яка структура компанії ",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Text 1",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Власник, Керівники відділів, працівники відділів",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Text 3",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Text 4",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "Які відділи діють у компанії ",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Text 1",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Покрівля та фасад, Будівельні матеріали, УманьТеплоКомфорт, Вікна, Двері, Логістика, IT, Фінансовий відділ, Бухгалтерія, Маркетинг",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Text 3",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Text 4",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "В структурі якого відділу - відділ Цех жетяних виробів",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Покрівля та фасад, Будівельні матеріали, УманьТеплоКомфорт, Вікна, Двері, Логістика, IT, Фінансовий відділ, Бухгалтерія, Маркетинг",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Покрівля та фасад",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Будівельні матеріали",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Автономний",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ],
+    "processes": [
+        {
+            "id": 1,
+            "text": "Що таке Бізнес-процеси",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Text 1",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Бізнес-процеси - це послідовність дій, що спрямовані для досягнення мікро цілей бізнесу",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Text 3",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Text 4",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ],
+    "software": [
+        {
+            "id": 1,
+            "text": "Для чого нам 1С",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Text 1",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Для реєстрації господарських операцій",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Text 3",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Text 4",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "Які складові 1С",
+            "hasOptions": true,
+            "options": [
+                {
+                    "id": 1,
+                    "text": "Text 1",
+                    "isCorrect": false
+                },
+                {
+                    "id": 2,
+                    "text": "Довідники, Документи, Звіти",
+                    "isCorrect": true
+                },
+                {
+                    "id": 3,
+                    "text": "Text 3",
+                    "isCorrect": false
+                },
+                {
+                    "id": 4,
+                    "text": "Text 4",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "Що таке 1С",
+            "hasOptions": false,
+            "answer": "Програма для реєстрації господарських операцій "
+        }
+    ]
+}

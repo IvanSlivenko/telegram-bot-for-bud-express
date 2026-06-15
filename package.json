@@ -1,0 +1,20 @@
+{
+  "name": "telegram-bot-for-bud-express",
+  "version": "1.0.0",
+  "description": "telegram-bot-for-bud-express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js "
+  },
+  "author": "Ivan Slivenko",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "googleapis": "^173.0.0",
+    "grammy": "^1.44.0",
+    "nodemon": "^3.1.11",
+    "random-js": "^2.1.0",
+    "xlsx": "^0.18.5"
+  }
+}
