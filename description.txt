@@ -218,6 +218,10 @@ function saveMessage(data) {
 
 module.exports = { saveMessage };
 =============================================================
+"client_email": "telegram-bo@telegram-bot-bud-express.iam.gserviceaccount.com",
+
+https://docs.google.com/spreadsheets/d/170ad3wf5VaatkrcRubmKksexOPNV0MSrh_46PwV5Tn0/edit?gid=0#gid=0
+idTabl: 170ad3wf5VaatkrcRubmKksexOPNV0MSrh_46PwV5Tn0
 
 
 npm run start

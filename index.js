@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { saveMessage } = require('./excel');
+// const { saveMessage } = require('./excel');
+const { saveMessage } = require('./googleSheets');
 const { Bot, Keyboard } = require('grammy');
 
 const bot = new Bot(process.env.BOT_API_KEY);
@@ -79,7 +80,8 @@ bot.on('message:text', async (ctx) => {
             console.log('Нове звернення:', users[userId]);
 
             // 💾 запис у Excel
-            saveMessage(users[userId]);
+            // saveMessage(users[userId]);
+            await saveMessage(users[userId]);
 
             // зберігаємо ID перед очищенням
             const ticketId = users[userId].ticketId;

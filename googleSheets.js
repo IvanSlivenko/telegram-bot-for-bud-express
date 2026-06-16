@@ -1,28 +1,38 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const credentials = require('./telegram-bot-bud-express-83b4a019a3b1.json');
 
-const doc = new GoogleSpreadsheet(
-    process.env.GOOGLE_SHEET_ID
-);
+const SHEET_ID = 'ТУТ_ВСТАВ_ID_ТАБЛИЦІ';
 
 async function saveMessage(data) {
+    try {
+        const doc = new GoogleSpreadsheet(
+            SHEET_ID,
+            {
+                auth: credentials
+            }
+        );
 
-    await doc.useServiceAccountAuth({
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
-    });
+        await doc.loadInfo();
 
-    await doc.loadInfo();
+        const sheet = doc.sheetsByIndex[0];
 
-    const sheet = doc.sheetsByIndex[0];
+        await sheet.addRow({
+            'Дата': new Date().toLocaleString('uk-UA'),
+            'ID заявки': data.ticketId,
+            'Ім\'я': data.name,
+            'Населений пункт': data.city,
+            'Телефон': data.phone,
+            'Суть запитання': data.question
+        });
 
-    await sheet.addRow({
-        'Дата': new Date().toLocaleString(),
-        'ID заявки': data.ticketId,
-        'Ім\'я': data.name,
-        'Населений пункт': data.city,
-        'Телефон': data.phone,
-        'Суть запитання': data.question
-    });
+        console.log('✅ Запис успішно додано в Google Sheets');
+
+    } catch (error) {
+        console.error(
+            '❌ Помилка запису в Google Sheets:',
+            error.message
+        );
+    }
 }
 
 module.exports = { saveMessage };
