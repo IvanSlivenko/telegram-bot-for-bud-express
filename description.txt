@@ -218,6 +218,9 @@ function saveMessage(data) {
 
 module.exports = { saveMessage };
 =============================================================
+----------------------------------------------------------------------- console.cloud.google.com
+
+https://console.cloud.google.com/iam-admin/serviceaccounts/details/101366230815996028551/keys?project=telegram-bot-bud-express&supportedpurview=project
 "client_email": "telegram-bo@telegram-bot-bud-express.iam.gserviceaccount.com",
 
 https://docs.google.com/spreadsheets/d/170ad3wf5VaatkrcRubmKksexOPNV0MSrh_46PwV5Tn0/edit?gid=0#gid=0

@@ -1,15 +1,24 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { JWT } = require('google-auth-library');
+
 const credentials = require('./telegram-bot-bud-express-83b4a019a3b1.json');
 
-const SHEET_ID = 'ТУТ_ВСТАВ_ID_ТАБЛИЦІ';
+const SHEET_ID = '170ad3wf5VaatkrcRubmKksexOPNV0MSrh_46PwV5Tn0';
 
 async function saveMessage(data) {
     try {
+
+        const serviceAccountAuth = new JWT({
+            email: credentials.client_email,
+            key: credentials.private_key,
+            scopes: [
+                'https://www.googleapis.com/auth/spreadsheets'
+            ],
+        });
+
         const doc = new GoogleSpreadsheet(
             SHEET_ID,
-            {
-                auth: credentials
-            }
+            serviceAccountAuth
         );
 
         await doc.loadInfo();
@@ -28,10 +37,8 @@ async function saveMessage(data) {
         console.log('✅ Запис успішно додано в Google Sheets');
 
     } catch (error) {
-        console.error(
-            '❌ Помилка запису в Google Sheets:',
-            error.message
-        );
+        console.error('❌ Повна помилка:');
+        console.error(error);
     }
 }
 
