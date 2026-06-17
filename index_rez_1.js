@@ -66,13 +66,6 @@ bot.on('message:text', async (ctx) => {
 
         case 'phone':
             users[userId].phone = text;
-            users[userId].step = 'manager';
-
-            await ctx.reply('Вкажіть менеджера');
-            break;
-
-        case 'manager':
-            users[userId].manager = text;
             users[userId].step = 'question';
 
             await ctx.reply('Опишіть суть запитання');
@@ -86,16 +79,17 @@ bot.on('message:text', async (ctx) => {
 
             console.log('Нове звернення:', users[userId]);
 
-            // 💾 запис у Google Sheets
+            // 💾 запис у Excel
+            // saveMessage(users[userId]);
             await saveMessage(users[userId]);
 
             // зберігаємо ID перед очищенням
             const ticketId = users[userId].ticketId;
 
-            // очищаємо дані користувача
+            // очищаємо
             delete users[userId];
 
-            // показуємо кнопку знову
+            // кнопка знову
             const keyboard = new Keyboard()
                 .text('📝 Задати запитання')
                 .resized();

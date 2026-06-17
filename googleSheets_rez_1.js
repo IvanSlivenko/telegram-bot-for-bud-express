@@ -31,7 +31,6 @@ async function saveMessage(data) {
             'Ім\'я': data.name,
             'Населений пункт': data.city,
             'Телефон': data.phone,
-            'Менеджер': data.manager,
             'Суть запитання': data.question
         });
 
