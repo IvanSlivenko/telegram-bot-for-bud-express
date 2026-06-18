@@ -1,57 +1,50 @@
 require('dotenv').config();
-
+// const { saveMessage } = require('./excel');
 const { saveMessage } = require('./googleSheets');
-const { Bot, InlineKeyboard, InputFile } = require('grammy');
+const { Bot, Keyboard, InlineKeyboard } = require('grammy');
 
 const bot = new Bot(process.env.BOT_API_KEY);
 
 const users = {};
 
-// ================= ID =================
+// 🔥 генерація унікального ID заявки
 function generateTicketId() {
     return 'ID-' + Date.now().toString().slice(-6);
 }
 
-// ================= START SCREEN =================
-async function showStartScreen(ctx) {
+// ================= START =================
+bot.command('start', async (ctx) => {
 
-    const keyboard = new InlineKeyboard()
-        .text('📝 Задати запитання', 'new_question');
+    const keyboard = new Keyboard()
+        .text('📝 Задати запитання')
+        .resized();
 
-    await ctx.replyWithPhoto(
-        new InputFile('./Family.jpg'),
+    await ctx.reply(
+        'Вітаю! Натисніть кнопку "📝 Задати запитання", щоб залишити звернення.',
         {
-            caption:
-                'Вітаю!\n\nНатисніть кнопку нижче, щоб залишити звернення.',
             reply_markup: keyboard
         }
     );
-
-}
-
-// ================= START =================
-bot.command('start', async (ctx) => {
-    await showStartScreen(ctx);
 });
 
-// ================= INLINE BUTTON =================
-bot.callbackQuery('new_question', async (ctx) => {
+// ================= BUTTON =================
+bot.hears('📝 Задати запитання', async (ctx) => {
 
     users[ctx.from.id] = {
         step: 'name'
     };
 
-    await ctx.answerCallbackQuery();
-
-    await ctx.reply("Введіть ваше ім'я");
-
+    await ctx.reply('Введіть ваше ім\'я');
 });
 
 // ================= FLOW =================
-bot.on('message', async (ctx) => {
+bot.on('message:text', async (ctx) => {
 
     const userId = ctx.from.id;
     const text = ctx.message.text;
+
+    // ігноруємо кнопку
+    if (text === '📝 Задати запитання') return;
 
     if (!users[userId]) return;
 
@@ -86,27 +79,36 @@ bot.on('message', async (ctx) => {
             break;
 
         case 'question':
-
             users[userId].question = text;
+
+            // 🔥 створюємо ID заявки
             users[userId].ticketId = generateTicketId();
 
             console.log('Нове звернення:', users[userId]);
 
+            // 💾 запис у Google Sheets
             await saveMessage(users[userId]);
 
+            // зберігаємо ID перед очищенням
             const ticketId = users[userId].ticketId;
 
+            // очищаємо дані користувача
             delete users[userId];
 
-            await ctx.reply(
-                `✅ Ваше звернення прийнято!\n🆔 ID: ${ticketId}`
-            );
+            // показуємо кнопку знову
+            const keyboard = new Keyboard()
+                .text('📝 Задати запитання')
+                .resized();
 
-            await showStartScreen(ctx);
+            await ctx.reply(
+                `✅ Ваше звернення прийнято!\n🆔 ID: ${ticketId}`,
+                {
+                    reply_markup: keyboard
+                }
+            );
 
             break;
     }
-
 });
 
 // ================= ERROR HANDLING =================
