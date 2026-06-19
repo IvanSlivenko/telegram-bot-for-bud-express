@@ -19,7 +19,7 @@ async function showStartScreen(ctx) {
         .text('📝 Задати запитання', 'new_question');
 
     await ctx.replyWithPhoto(
-        new InputFile('./foto_before_button.png'),
+        new InputFile('./start_quest_2.JPG'),
         {
             // caption:
             //     'Вітаю!\n\nНатисніть кнопку нижче, щоб залишити звернення.',
