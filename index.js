@@ -19,10 +19,10 @@ async function showStartScreen(ctx) {
         .text('📝 Задати запитання', 'new_question');
 
     await ctx.replyWithPhoto(
-        new InputFile('./Family.jpg'),
+        new InputFile('./foto_before_button.png'),
         {
-            caption:
-                'Вітаю!\n\nНатисніть кнопку нижче, щоб залишити звернення.',
+            // caption:
+            //     'Вітаю!\n\nНатисніть кнопку нижче, щоб залишити звернення.',
             reply_markup: keyboard
         }
     );
